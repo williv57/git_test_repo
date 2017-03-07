@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- Default permissions file -->
+
+<AccessControls version="1.0" readonly="TRUE">
+
+   <!-- Some default admins as templates -->
+   <Administrator name="root admin" user="sasiom5" type="SuperUser"/>
+   <Administrator name="SAS Administrators" group="SASAdministrators" type="SuperUser"/>
+   <Administrator name="data admin" user="diffuser" type="Data"/>
+   <Administrator name="CAS Administrator " user="cas" type="SuperUser"/>
+   
+   <!-- Manage Global Caslibs -->
+   <CASLib name='_GLOBAL' desc='Permission for global caslib creation'>
+
+      <!-- Grant all users full access to create caslibs -->
+      <Grant group='*' perm='ManageAccess'/>
+
+   </CASLib>
+
+   <!-- Manage Session Caslibs -->
+   <CASLib name='_SESSION' desc='Permission for session caslib creation'>
+
+      <!-- Grant all users full access to create caslibs -->
+      <Grant group='*' perm='ManageAccess'/>
+
+   </CASLib>
+
+   <CASLib name='Formats'
+           desc='Format Caslib'
+           path='/bigdisk/lax/formats'
+           uuid='16ea7916-8888-9999-9180-1731849b9c36'
+           subdirs='TRUE' type='PATH'>
+
+      <Grant group='*' perm='ReadInfo'/>
+      <Grant group='*' perm='ManageAccess'/>
+      <Grant group='*' perm='AlterCaslib'/>
+
+      <Grant group='*' perm='CreateTable'/>
+      <Grant group='*' perm='DropTable'/>
+      <Grant group='*' perm='AlterTable'/>
+      <Grant group='*' perm='Promote'/>
+
+      <Grant group='*' perm='Select'/>
+      <Grant group='*' perm='Insert'/>
+      <Grant group='*' perm='Update'/>
+      <Grant group='*' perm='Delete'/>
+
+   </CASLib>
+
+   <CASLib name='EngTest' 
+           desc='engtest&apos;s HDAT files' 
+           path='/user/engtest' 
+           uuid='1f2db481-1a46-45a3-9574-08f992ac873a'
+           subdirs='TRUE' type='HDFS'>
+      
+      <Grant group='*' perm='ReadInfo'/>
+      <Grant group='*' perm='ManageAccess'/>
+      <Grant group='*' perm='AlterCaslib'/>
+
+      <Grant group='*' perm='CreateTable'/>
+      <Grant group='*' perm='DropTable'/>
+      <Grant group='*' perm='AlterTable'/>
+      <Grant group='*' perm='Promote'/>
+
+      <Grant group='*' perm='Select'/>
+      <Grant group='*' perm='Insert'/>
+      <Grant group='*' perm='Update'/>
+      <Grant group='*' perm='Delete'/>
+
+   </CASLib>
+
+   <CASLib name='HPS' 
+           desc='HDAT files on /hps' 
+           path='/hps' 
+           uuid='d58bad02-b895-43a6-a082-0798de9cfb13'
+           subdirs='TRUE' type='HDFS'>
+      
+      <Grant group='*' perm='ReadInfo'/>
+      <Grant group='*' perm='ManageAccess'/>
+      <Grant group='*' perm='AlterCaslib'/>
+
+      <Grant group='*' perm='CreateTable'/>
+      <Grant group='*' perm='DropTable'/>
+      <Grant group='*' perm='AlterTable'/>
+      <Grant group='*' perm='Promote'/>
+
+      <Grant group='*' perm='Select'/>
+      <Grant group='*' perm='Insert'/>
+      <Grant group='*' perm='Update'/>
+      <Grant group='*' perm='Delete'/>
+
+   </CASLib>
+
+   <CASLib name='CASTestTmp'
+           desc='castest&apos;s test files'
+           path='/bigdisk/lax/castest'
+           uuid='16ea7916-86af-4547-9180-1731849b9c36'
+           subdirs='TRUE' type='PATH'>
+
+      <Grant group='*' perm='ReadInfo'/>
+      <Grant group='*' perm='ManageAccess'/>
+      <Grant group='*' perm='AlterCaslib'/>
+
+      <Grant group='*' perm='CreateTable'/>
+      <Grant group='*' perm='DropTable'/>
+      <Grant group='*' perm='AlterTable'/>
+      <Grant group='*' perm='Promote'/>
+
+      <Grant group='*' perm='Select'/>
+      <Grant group='*' perm='Insert'/>
+      <Grant group='*' perm='Update'/>
+      <Grant group='*' perm='Delete'/>
+
+   </CASLib>
+   
+   <!-- Manage Registered Action Sets -->
+   <ActionSet name='_REGISTERED'>
+
+      <!-- Grant all users full access to create Action Set metadata -->
+      <Grant group='*' perm='ManageAccess'/>
+
+   </ActionSet>
+
+   <!-- Manage Unregistered Action Sets -->
+   <ActionSet name='_UNREGISTERED'>
+
+      <!-- Grant all users full access to create Action Set metadata -->
+      <Grant group='*' perm='ManageAccess'/>
+
+      <!-- Grant all users load for development environment -->
+      <Grant group='*' perm='Load'/>
+      
+   </ActionSet>
+
+   <ActionSet name='builtins' flags='system'>
+
+      <!-- Grant all users access to all actions -->
+      <Grant group='*' perm='ReadInfo'/>
+      <Grant group='*' perm='Execute'/>
+      <Grant group='*' perm='Load'/>
+
+      <!-- Explicit access controls required on shutdown -->
+      <Action name='shutdown' flags='direct'>
+         <Grant group='*' perm='Execute'/>
+         <Grant group='*' perm='ReadInfo'/>
+         <Grant group='*' perm='ManageAccess'/>
+      </Action>
+
+      <!-- Explicit access controls required on addNode -->
+      <Action name='addNode' flags='direct'>
+         <Grant group='*' perm='Execute'/>
+         <Grant group='*' perm='ReadInfo'/>
+         <Grant group='*' perm='ManageAccess'/>
+      </Action>
+
+      <!-- Explicit access controls required on removeNode -->
+      <Action name='removeNode' flags='direct'>
+         <Grant group='*' perm='Execute'/>
+         <Grant group='*' perm='ReadInfo'/>
+         <Grant group='*' perm='ManageAccess'/>
+      </Action>
+
+      <!-- System actions -->
+      <Action name='help' flags='system'/>
+      <Action name='queryActionSet' flags='system'/>
+      <Action name='queryName' flags='system'/>
+      <Action name='reflect' flags='system'/>
+      <Action name='casCommon' flags='system'/>
+
+   </ActionSet>
+
+   <ActionSet name='configuration' flags='system'>
+
+      <!-- Grant all users access to all actions -->
+      <Grant group='*' perm='ReadInfo'/>
+      <Grant group='*' perm='Execute'/>
+      <Grant group='*' perm='Load'/>
+
+      <!-- Direct access controls required on setServOpt -->
+      <Action name='setServOpt' flags='direct'>
+         <Grant group='*'       perm='ReadInfo'/>
+         <Grant group='*'       perm='Execute'/>
+         <Grant group='*'       perm='ManageAccess'/>
+      </Action>
+
+      <!-- Direct access controls required on getServOpt -->
+      <Action name='getServOpt' flags='direct'>
+         <Grant group='*'       perm='ReadInfo'/>
+         <Grant group='*'       perm='Execute'/>
+         <Grant group='*'       perm='ManageAccess'/>
+      </Action>
+
+      <!-- Direct access controls required on listServOpts -->
+      <Action name='listServOpts' flags='direct'>
+         <Grant group='*'         perm='ReadInfo'/>
+         <Grant group='*'         perm='Execute'/>
+         <Grant group='*'         perm='ManageAccess'/>
+      </Action>
+
+   </ActionSet>
+
+   <ActionSet name='accessControl' flags='system'>
+      <Grant group='*' perm='ReadInfo'/>
+      <Grant group='*' perm='Execute'/>
+      <Grant group='*' perm='Load'/>
+   </ActionSet>
+
+   <ActionSet name='table' flags='system'>
+      <Grant group='*' perm='ReadInfo'/>
+      <Grant group='*' perm='Execute'/>
+      <Grant group='*' perm='Load'/>
+      <Action name='queryCasLib' flags='system'/>
+   </ActionSet>
+
+   <ActionSet name='session' flags='system'>
+      <Grant group='*' perm='ReadInfo'/>
+      <Grant group='*' perm='Execute'/>
+      <Grant group='*' perm='Load'/>
+   </ActionSet>
+
+   <ActionSet name='sessionProp' flags='system'>
+      <Grant group='*' perm='ReadInfo'/>
+      <Grant group='*' perm='Execute'/>
+      <Grant group='*' perm='Load'/>
+   </ActionSet>
+
+</AccessControls>
